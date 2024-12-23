@@ -5,6 +5,21 @@
     <%= render "devise/shared/error_messages", resource: resource %>
 
     <div class="field mb-4">
+      <%= f.label :first_name, class: "block text-base font-medium text-black" %>
+      <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "p-3 w-full border border-gray-300 rounded-md bg-white text-black focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500" %>
+    </div>
+
+    <div class="field mb-4">
+      <%= f.label :last_name, class: "block text-base font-medium text-black" %>
+      <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: "p-3 w-full border border-gray-300 rounded-md bg-white text-black focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500" %>
+    </div>
+
+    <div class="field mb-4">
+      <%= f.label :username, class: "block text-base font-medium text-black" %>
+      <%= f.text_field :username, autofocus: true, autocomplete: "username", class: "p-3 w-full border border-gray-300 rounded-md bg-white text-black focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500" %>
+    </div>
+
+    <div class="field mb-4">
       <%= f.label :email, class: "block text-base font-medium text-black" %>
       <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "p-3 w-full border border-gray-300 rounded-md bg-white text-black focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500" %>
     </div>
