@@ -3,7 +3,7 @@
 
   <% if @exercise.image.attached? %>
     <div class="flex justify-center mb-6 w-full">
-      <%= image_tag @exercise.image.file_path, class: "w-full max-w-md rounded-lg shadow-md object-cover" %>
+      <%= image_tag @exercise.image, class: "w-full max-w-md rounded-lg shadow-md object-cover" %>
     </div>
   <% else %>
     <div class="flex justify-center items-center w-full max-w-md h-64 bg-gray-300 rounded-lg shadow-md">
