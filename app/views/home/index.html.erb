@@ -1,15 +1,15 @@
 <div class="flex justify-center items-center bg-red-500 text-white py-4 w-full ">
   <div class="container mx-10 flex justify-between items-center">
-    <a href="/" class="text-lg font-bold">CoreFit</a>
+    <%= link_to "CoreFit", root_path, class: "text-lg font-bold" %>
     <nav class="flex space-x-6 ml-auto mr-10">
-      <a href="#home" class="hover:text-gray-300">Home</a>
-      <a href="#about" class="hover:text-gray-300">About</a>
-      <a href="#exercises" class="hover:text-gray-300">Exercises</a>
-      <a href="#contact" class="hover:text-gray-300">Contact</a>
+      <%= link_to "Home", root_path, class: "hover:text-gray-300" %>
+      <%= link_to "About", "#about", class: "hover:text-gray-300" %>
+      <%= link_to "Exercises", exercises_path, class: "hover:text-gray-300" %>
+      <%= link_to "Contact", "#contact", class: "hover:text-gray-300" %>
     </nav>
     <div class="flex space-x-4">
-      <a href="/login" class="bg-white text-red-500 px-4 py-2 rounded-lg hover:bg-gray-100">Profile</a>
-      <a href="/signup" class="bg-red-700 text-white px-4 py-2 rounded-lg hover:bg-red-600">Log Out</a>
+      <%= link_to "Profile", "#profile", class: "bg-white text-red-500 px-4 py-2 rounded-lg hover:bg-gray-100" %>
+      <%= link_to "Log Out", destroy_user_session_path, class: "bg-red-700 text-white px-4 py-2 rounded-lg hover:bg-red-600" %>
     </div>
   </div>
 </div>
