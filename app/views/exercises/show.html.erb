@@ -4,7 +4,7 @@
     <div class="flex justify-end mb-6">
       <% if current_user.admin? %>
         <%= link_to 'Edit', edit_exercise_path(@exercise), class: "px-6 py-2 bg-red-500 text-white font-semibold rounded-lg hover:bg-red-600 shadow-md transition duration-300 mr-2" %>
-        <%= link_to 'Delete', exercise_path(@exercise), class: "bg-white text-red-500 px-4 py-2 border-2 font-semibold rounded-lg hover:bg-gray-100 shadow-sm" %>
+        <%= link_to 'Delete', exercise_path(@exercise), data: { turbo_method: :delete }, class: "bg-white text-red-500 px-4 py-2 border-2 font-semibold rounded-lg hover:bg-gray-100 shadow-sm" %>
       <% end %>
     </div>
     
