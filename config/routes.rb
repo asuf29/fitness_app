@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   resources :exercises
   devise_for :users
   resources :profiles
-
+  resources :workouts
 end
