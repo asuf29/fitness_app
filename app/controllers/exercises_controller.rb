@@ -1,5 +1,6 @@
 class ExercisesController < ApplicationController
   before_action :set_exercise, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_admin!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @exercises = Exercise.all
@@ -41,8 +42,15 @@ class ExercisesController < ApplicationController
   def exercise_params
     params.require(:exercise).permit(:name, :content, :image)
   end
+
   def set_exercise
     @exercise = Exercise.find(params[:id])
   end
-end
 
+  def authenticate_admin!
+    unless current_user.admin?
+      flash[:alert] = "You are not autorized to perform this action."
+      redirect_to root_path
+    end
+  end
+end
