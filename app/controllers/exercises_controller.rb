@@ -1,10 +1,11 @@
 class ExercisesController < ApplicationController
+  before_action :set_exercise, only: [:show, :edit, :update, :destroy]
+
   def index
     @exercises = Exercise.all
   end
 
   def show
-    @exercise = Exercise.find(params[:id])
   end
 
   def new
@@ -21,11 +22,9 @@ class ExercisesController < ApplicationController
   end
 
   def edit
-    @exercise = Exercise.find(params[:id])
   end
 
   def update
-    @exercise = Exercise.find(params[:id])
     if @exercise.update(exercise_params)
       redirect_to @exercise
     else
@@ -34,7 +33,6 @@ class ExercisesController < ApplicationController
   end
   
   def destroy
-    @exercise = Exercise.find(params[:id])
     @exercise.destroy
     redirect_to exercises_path, status: :see_other
   end
@@ -42,6 +40,9 @@ class ExercisesController < ApplicationController
   private
   def exercise_params
     params.require(:exercise).permit(:name, :content, :image)
+  end
+  def set_exercise
+    @exercise = Exercise.find(params[:id])
   end
 end
 
