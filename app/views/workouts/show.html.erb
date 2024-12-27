@@ -2,10 +2,8 @@
   <h1 class="text-3xl font-bold mb-8 text-center text-gray-800 mt-4"><%= @workout.name %></h1>
   <div class="bg-white w-full max-w-3xl p-6 rounded-lg shadow-lg">
     <div class="flex justify-end mb-6">
-      <% if current_user.admin? %>
-        <%= link_to 'Edit', edit_workout_path(@workout), class: "px-6 py-2 bg-red-500 text-white font-semibold rounded-lg hover:bg-red-600 shadow-md transition duration-300 mr-2" %>
-        <%= link_to 'Delete', workout_path(@workout), data: { turbo_method: :delete }, class: "bg-white text-red-500 px-4 py-2 border-2 font-semibold rounded-lg hover:bg-gray-100 shadow-sm" %>
-      <% end %>
+      <%= link_to 'Edit', edit_workout_path(@workout), class: "px-6 py-2 bg-red-500 text-white font-semibold rounded-lg hover:bg-red-600 shadow-md transition duration-300 mr-2" %>
+      <%= link_to 'Delete', workout_path(@workout), data: { turbo_method: :delete }, class: "bg-white text-red-500 px-4 py-2 border-2 font-semibold rounded-lg hover:bg-gray-100 shadow-sm" %>
     </div>
     <% if @workout.c_image.attached? %>
       <div class="flex justify-center mb-8">
