@@ -5,7 +5,7 @@
     </div>
     <div class="w-32 h-32 rounded-full overflow-hidden shadow-lg mx-auto mb-6">
       <% if current_user.profile_picture.attached? %>
-        <%= image_tag current_user.profile_picture, class: "w-full h-full object-cover" %>
+        <%= image_tag current_user.profile_picture, class: "w-full h-full object-c_image" %>
       <% else %>
         <div class="flex items-center justify-center w-full h-full bg-gray-300">
           <span class="text-gray-500 text-xl font-bold">No Photo</span>

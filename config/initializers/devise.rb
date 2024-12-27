@@ -87,7 +87,7 @@ Devise.setup do |config|
   # The realm used in Http Basic Authentication. 'Application' by default.
   # config.http_authentication_realm = 'Application'
 
-  # It will change confirmation, password recovery and other workflows
+  # It will change confirmation, password rec_imagey and other workflows
   # to behave the same regardless if the e-mail provided was right or wrong.
   # Does not affect registerable.
   # config.paranoid = true
@@ -216,9 +216,9 @@ Devise.setup do |config|
   # Warn on the last attempt before the account is locked.
   # config.last_attempt_warning = true
 
-  # ==> Configuration for :recoverable
+  # ==> Configuration for :rec_imageable
   #
-  # Defines which key will be used when recovering the password for an account
+  # Defines which key will be used when rec_imageing the password for an account
   # config.reset_password_keys = [:email]
 
   # Time interval you can reset your password with a reset password key.
