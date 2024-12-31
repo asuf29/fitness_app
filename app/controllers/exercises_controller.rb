@@ -3,7 +3,12 @@ class ExercisesController < ApplicationController
   before_action :authenticate_admin!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
-    @exercises = Exercise.all
+    if params[:query].present?
+      query = "%#{params[:query]}%"
+      @exercises = Exercise.where("name ILIKE ?", query)
+    else
+      @exercises = Exercise.all
+    end
   end
 
   def show
