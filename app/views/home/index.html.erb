@@ -1,0 +1,19 @@
+<div class="flex flex-col items-center w-full bg-gray-100 min-h-screen py-8 px-4">
+  <h1 class="text-3xl font-extrabold text-gray-900 mb-8">Featured Workouts for You!</h1>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <% @highlighted_workouts.each do |workout| %>
+      <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105">
+        <%= link_to workout_path(workout) do %>
+          <% if workout.c_image.attached? %>
+            <div class="h-60 w-full">
+              <%= image_tag workout.c_image, class: "object-cover w-full h-full" %>
+            </div>
+          <% end %>
+          <div class="p-4">
+            <h2 class="text-lg font-bold text-gray-800 text-center"><%= workout.name %></h2>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

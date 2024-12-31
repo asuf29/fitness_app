@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @welcome_message = "Welcome to the Home Page!"
+    @highlighted_workouts = Workout.where(highlighted: true)
   end
 end
