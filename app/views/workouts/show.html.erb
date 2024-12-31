@@ -1,5 +1,4 @@
 <div class="flex flex-col items-center w-full min-h-screen bg-gray-100 px-4 py-8">
-  
   <div class="bg-white w-full max-w-3xl p-6 rounded-lg shadow-lg">
     <h1 class="text-3xl font-bold text-center text-gray-800 mb-8"><%= @workout.name %></h1>
     <% if @workout.c_image.attached? %>
@@ -8,13 +7,25 @@
       </div>
     <% end %>
     <div class="flex justify-end mb-6">
-     <%= link_to 'Edit',  edit_workout_path(@workout), class: "px-6 py-2 bg-red-500 text-white font-semibold rounded-lg hover:bg-red-600 shadow-md transition duration-300 mr-2" %>
-        <%= link_to 'Delete', workout_path(@workout), data: { turbo_method: :delete }, class: "bg-white text-red-500 px-4 py-2 border-2 font-semibold rounded-lg hover:bg-gray-100 shadow-sm" %>
+      <%= link_to 'Edit', edit_workout_path(@workout), class: "px-6 py-2 bg-red-500 text-white font-semibold rounded-lg hover:bg-red-600 shadow-md transition duration-300 mr-2" %>
+      <%= link_to 'Delete', workout_path(@workout), data: { turbo_method: :delete }, class: "bg-white text-red-500 px-4 py-2 border-2 font-semibold rounded-lg hover:bg-gray-100 shadow-sm" %>
     </div>
-    <% if @exercises.any? %>
+    <% if @workout.workout_exercises.any? %>
       <ul class="space-y-6">
-        <% @exercises.each do |exercise| %>
-          <%= render "exercise", exercise: exercise %>
+        <% @workout.workout_exercises.each do |workout_exercise| %>
+          <li class="flex items-center space-x-4">
+            <% if workout_exercise.exercise.image.attached? %>
+              <div class="flex-shrink-0 w-50 h-40">
+                <%= image_tag workout_exercise.exercise.image, class: "object-cover rounded-lg w-full h-full" %>
+              </div>
+            <% end %>
+            <div>
+              <h2 class="text-xl font-semibold text-gray-800"><%= workout_exercise.exercise.name %></h2>
+              <p class="text-sm text-gray-600">Set: <%= workout_exercise.set %></p>
+              <p class="text-sm text-gray-600">Rep: <%= workout_exercise.rep %></p>
+              <p class="text-sm text-gray-600">Duration: <%= workout_exercise.duration %> seconds</p>
+            </div>
+          </li>
         <% end %>
       </ul>
     <% else %>

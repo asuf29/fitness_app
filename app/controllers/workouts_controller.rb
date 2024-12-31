@@ -6,7 +6,7 @@ class WorkoutsController < ApplicationController
   end
 
   def show
-    @exercises = @workout.exercises
+    @exercises = @workout_exercises
   end
 
   def new
@@ -39,7 +39,7 @@ class WorkoutsController < ApplicationController
   end
 
   def workout_params
-    params.require(:workout).permit(:name, :c_image)
+    params.require(:workout).permit(:name, :c_image, workout_exercises_attributes: [:id, :exercise_id, :set, :rep, :duration, :_destroy])
   end
 
   def set_workout

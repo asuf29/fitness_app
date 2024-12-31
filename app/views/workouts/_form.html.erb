@@ -1,4 +1,7 @@
-<%= form_with model: @workout, local: true do |form| %>
+<%= form_with model: @workout, data: {
+  controller: "nested-form",
+  nested_form_wrapper_selector_value: '.nested-form-wrapper'
+} do |form| %>
   <div class="field">
     <%= form.label :name, class: "block text-lg font-semibold text-gray-700 mb-2" %>
     <%= form.text_field :name,  class: "w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 mb-4", placeholder: "Enter workout name" %>
@@ -7,7 +10,20 @@
     <%= form.label :c_image, "Upload c_image", class: "block text-lg font-semibold text-gray-700 mb-2" %>
     <%= form.file_field :c_image, class: "w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500" %>
   </div>
+  <template data-nested-form-target="template">
+    <%= form.fields_for :workout_exercises, @workout.workout_exercises.new, child_index: "NEW_RECORD" do |exercise_fields| %>
+      <%= render "workout_exercise", form: exercise_fields %>
+    <% end %>
+  </template>
+  <%= form.fields_for :workout_exercises do |exercise_fields| %>
+    <%= render "workout_exercise", form: exercise_fields %>
+  <% end %>
+  <div data-nested-form-target="target"></div>
+  <button type="button" data-action="nested-form#add", class="bg-white text-red-500 px-4 py-2 rounded-lg hover:bg-gray-100 mt-2 border">Add Exercise</button>
+
   <div class="flex justify-end items-center mt-4">
-    <%= form.submit 'Create Workout', class: "px-6 py-2 bg-red-500 text-white font-semibold rounded-lg border-2 border-red-500 hover:bg-white hover:text-red-500 transition duration-300" %>
+    <%= form.submit 'Save', class: "px-6 py-2 bg-red-500 text-white font-semibold rounded-lg border-2 border-red-500 hover:bg-white hover:text-red-500 transition duration-300" %>
   </div>
 <% end %>
+
+

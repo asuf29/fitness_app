@@ -1,0 +1,30 @@
+<div class="nested-form-wrapper exercise-fields border p-4 rounded-lg shadow-md mb-4 mt-4" data-new-record="<%= form.object.new_record?%>">
+  <div class="mb-4">
+    <%= form.label :exercise_id, "Exercise", class: "block text-gray-700 font-semibold mb-2" %>
+    <%= form.select :exercise_id, Exercise.all.pluck(:name, :id), {prompt: "Select an Exercise"}, 
+      {class: "w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"} %>
+  </div>
+
+  <div class="mb-4">
+    <%= form.label :set, "Set", class: "block text-gray-700 font-semibold mb-2" %>
+    <%= form.number_field :set, class: "w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500" %>
+  </div>
+
+  <div class="mb-4">
+    <%= form.label :rep, "Rep", class: "block text-gray-700 font-semibold mb-2" %>
+    <%= form.number_field :rep, class: "w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500" %>
+  </div>
+
+  <div class="mb-4">
+    <%= form.label :duration, "Duration (in seconds)", class: "block text-gray-700 font-semibold mb-2" %>
+    <%= form.number_field :duration, class: "w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500" %>
+  </div>
+
+  <%= form.hidden_field :_destroy %>
+
+  <div class="flex justify-end mt-4">
+    <button type="button"  data-action="nested-form#remove" class="remove-exercise bg-white text-red-500 px-4 py-2 rounded-lg border hover:bg-gray-100 transition duration-300">
+      Remove
+    </button>
+  </div>
+</div>

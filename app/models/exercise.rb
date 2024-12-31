@@ -1,7 +1,7 @@
 class Exercise < ApplicationRecord
   has_rich_text :content
   has_one_attached :image
-  has_many :workout_exercises
+  has_many :workout_exercises, dependent: :destroy
   has_many :workouts, through: :workout_exercises 
   validate :image_validation
 
