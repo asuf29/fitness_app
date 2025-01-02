@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @highlighted_workouts = Workout.where(highlighted: true)
+    @highlighted_workouts = Workout.highlighted
   end
 end
