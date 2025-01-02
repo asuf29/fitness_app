@@ -1,24 +1,24 @@
-<div class="flex flex-col items-center w-full min-h-screen bg-gray-100 px-4">
-  <h1 class="text-3xl font-bold mb-8 text-center text-gray-800 mt-4"><%= @exercise.name %></h1>
-  <div class="bg-white w-full max-w-3xl p-6 rounded-lg shadow-lg">
-    <div class="flex justify-end mb-6">
+<div class="flex flex-col items-center w-full min-h-screen py-8 bg-gray-100">
+  <div class="flex justify-between items-center w-full max-w-3xl mb-8">
+    <h1 class="text-3xl font-bold text-gray-800"><%= @exercise.name %></h1>
+    <div class="flex space-x-4">
       <% if current_user.admin? %>
-        <%= link_to 'Edit', edit_exercise_path(@exercise), class: "px-6 py-2 bg-red-500 text-white font-semibold rounded-lg hover:bg-red-600 shadow-md transition duration-300 mr-2" %>
+        <%= link_to 'Edit', edit_exercise_path(@exercise), class: "px-6 py-2 bg-red-500 text-white font-semibold rounded-lg hover:bg-red-600 shadow-md transition duration-300" %>
         <%= link_to 'Delete', exercise_path(@exercise), data: { turbo_method: :delete }, class: "bg-white text-red-500 px-4 py-2 border-2 font-semibold rounded-lg hover:bg-gray-100 shadow-sm" %>
       <% end %>
     </div>
-    
+  </div>
+  <div class="bg-white w-full max-w-3xl p-4 rounded-lg shadow-md space-y-8">
     <% if @exercise.image.attached? %>
       <div class="flex justify-center mb-8">
-        <%= image_tag @exercise.image, class: "w-full max-w-lg rounded-lg shadow-md object-c_image" %>
+        <%= image_tag @exercise.image, class: "w-full max-w-lg rounded-lg object-cover" %>
       </div>
     <% else %>
       <div class="flex justify-center items-center w-full max-w-lg h-64 bg-gray-300 rounded-lg shadow-md">
         <p class="text-gray-500 text-lg text-center">No image available</p>
       </div>
     <% end %>
-    
-    <div class="w-full bg-gray-50 p-6 rounded-lg shadow-md">
+    <div class="w-full p-6 ">
       <p class="text-gray-700 text-lg leading-relaxed"><%= @exercise.content %></p>
     </div>
   </div>
