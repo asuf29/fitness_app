@@ -36,6 +36,7 @@
               <%= link_to exercise_path(exercise) do %>
                 <h2 class="text-xl font-semibold text-gray-800"><%= exercise.name %></h2>
               <% end %>
+              <p class="text-sm text-gray-500 mt-1"><%= exercise.muscle.capitalize %></p>
             </div>
             <div class="flex space-x-4 mt-4 md:mt-0">
               <%= link_to 'Show', exercise_path(exercise), class: "bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600" %>
