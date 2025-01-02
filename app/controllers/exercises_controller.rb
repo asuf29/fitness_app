@@ -3,18 +3,18 @@ class ExercisesController < ApplicationController
   before_action :authenticate_admin!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
-    @exercises = Exercise.all
+    search = []
 
-    if params[:query].present? && params[:muscle].present?
-      query = "%#{params[:query]}%"
-      muscle = params[:muscle]
-      @exercises = @exercises.where("name ILIKE ? AND muscle = ?", query, muscle)
-    elsif params[:query].present?
-      query = "%#{params[:query]}%"
-      @exercises = @exercises.where("name ILIKE ?", query)
-    elsif params[:muscle].present?
-      @exercises = @exercises.where(muscle: params[:muscle])
+    search << "name ILIKE '%#{params[:query]}%'" if params[:query].present?
+    search << "muscle = #{params[:muscle]}" if params[:muscle].present?
+
+    if search.present? 
+      search = search.join(" AND ")
+    else
+      search = "true"
     end
+
+    @exercises = Exercise.where(search)
   end
 
   def show
