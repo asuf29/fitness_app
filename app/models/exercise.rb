@@ -4,6 +4,7 @@ class Exercise < ApplicationRecord
   has_many :workout_exercises, dependent: :destroy
   has_many :workouts, through: :workout_exercises 
   validate :image_validation
+  enum muscle: { chest: 0, back: 1, arms: 2, legs: 3, shoulders: 4, core: 5 }
 
   private
 
