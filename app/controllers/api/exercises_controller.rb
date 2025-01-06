@@ -25,7 +25,7 @@ class Api::ExercisesController < Api::ApplicationController
         image: url_for(exercise.image)
       }, status: :ok
     else 
-      render json: { error: "User not found" }, status: :not_found
+      render json: { error: "Exercise not found" }, status: :not_found
     end
   end
 end
