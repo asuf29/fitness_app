@@ -2,10 +2,12 @@
   controller: "nested-form",
   nested_form_wrapper_selector_value: '.nested-form-wrapper'
 } do |form| %>
-  <div class="field flex items-center space-x-2 mb-2">
-  <%= form.check_box :highlighted, class: "w-5 h-5 border border-gray-300 rounded focus:ring-2 focus:ring-red-500" %>
-  <%= form.label :highlighted, "Featured Workout", class: "text-lg font-semibold text-gray-700" %>
-  </div>
+  <% if current_user.admin? %>
+    <div class="field flex items-center space-x-2 mb-2">
+      <%= form.check_box :highlighted, class: "w-5 h-5 border border-gray-300 rounded focus:ring-2 focus:ring-red-500" %>
+      <%= form.label :highlighted, "Featured Workout", class: "text-lg font-semibold text-gray-700" %>
+    </div>
+  <% end %>
   <div class="field">
     <%= form.label :name, class: "block text-lg font-semibold text-gray-700 mb-2" %>
     <%= form.text_field :name,  class: "w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 mb-4", placeholder: "Enter workout name" %>
