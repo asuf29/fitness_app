@@ -1,12 +1,13 @@
 class WorkoutsController < ApplicationController
-  before_action :set_workout, only: [:show, :edit, :update, :destroy]
+  before_action :set_workout, only: [:edit, :update, :destroy]
+  before_action :find_workout, only: [:show]
 
   def index
     @workouts = current_user.workouts
   end
 
   def show
-    @exercises = @workout_exercises
+    @exercises = @workout.workout_exercises
   end
 
   def new
@@ -51,6 +52,14 @@ class WorkoutsController < ApplicationController
     unless @workout
       flash[:alert] = "Workout not found or you are not authorized to access it."
       redirect_to workouts_path
+    end
+  end
+
+  def find_workout
+    @workout = Workout.find_by(id: params[:id])
+    unless @workout
+      flash[:alert] = "Workout not found."
+      redirect_to root_path
     end
   end
 end
