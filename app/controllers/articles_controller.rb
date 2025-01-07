@@ -5,6 +5,7 @@ class ArticlesController < ApplicationController
   end
 
   def show
+    @comments = @article.comments.order(created_at: :desc)
   end
 
   def new
