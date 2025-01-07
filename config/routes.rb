@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   resources :profiles
   resources :workouts
   resources :articles do
-    resources :comments, controller: "articles/comments"
+    resources :comments, controller: "articles/comments" do
+      post "like", on: :member
+    end
   end
 
   namespace :api do

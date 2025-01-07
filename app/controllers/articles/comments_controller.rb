@@ -1,6 +1,6 @@
 class Articles::CommentsController < ApplicationController
   before_action :set_article
-  before_action :set_comment, only: [:edit, :update, :destroy]
+  before_action :set_comment, only: [:edit, :update, :destroy, :like]
 
   def create
     @comment = @article.comments.build(comment_params)
@@ -27,6 +27,18 @@ class Articles::CommentsController < ApplicationController
   def destroy 
     @comment.destroy
     redirect_to article_path(@article), status: :see_other
+  end
+
+  def like
+    existing_like = @comment.likes.find_by(user: current_user)
+    if existing_like
+      existing_like.destroy
+      redirect_to article_path(@article), notice: "You unliked the comment."
+    else
+      @comment.likes.create(user: current_user)
+      redirect_to article_path(@article), notice: "You liked the comment."
+    end
+    
   end
 
   private
