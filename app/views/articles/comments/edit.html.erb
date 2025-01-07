@@ -1,0 +1,13 @@
+<div class="flex justify-center items-center w-full p-4">
+  <div class="col-span-6 bg-gray-100 p-4 rounded-lg shadow-md">
+    <div class="p-2">
+      <h2 class="text-base font-semibold">edit comment</h2>
+      <%= form_with model: [@article, @comment] do |form| %>
+        <div class="flex justify-center items-center w-full px-2 py-2 focus:outline-none focus:ring focus:ring-red-200 mb-2">
+          <%= form.text_area :content, class: "w-full rounded-lg border border-gray-300"%>
+        </div>
+        <%= form.submit "Save", class: "w-full bg-red-600 text-white font-semibold py-2 px-2 rounded-lg shadow-md hover:bg-red-700 focus:outline-none focus:ring focus:ring-red-200 mb-2" %>
+      <% end %>
+    </div>
+  </div>
+</div>
