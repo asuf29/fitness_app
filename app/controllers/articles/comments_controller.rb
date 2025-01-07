@@ -31,14 +31,14 @@ class Articles::CommentsController < ApplicationController
 
   def like
     existing_like = @comment.likes.find_by(user: current_user)
-
-    if existing_like 
-      existing_like.destroy, notice: "You unliked the comment."
-    else 
-      @comment.likes.create(user: current_user), notice: "You liked the comment."
-    end 
-
-    redirect_to article_path(@article), notice: notice
+    if existing_like
+      existing_like.destroy
+      redirect_to article_path(@article), notice: "You unliked the comment."
+    else
+      @comment.likes.create(user: current_user)
+      redirect_to article_path(@article), notice: "You liked the comment."
+    end
+    
   end
 
   private
