@@ -1,0 +1,6 @@
+    <%= form_with model: [article, Comment.new] do |form| %>
+      <div class="flex justify-center items-center w-full px-2 py-2 focus:outline-none focus:ring focus:ring-red-200 mb-2">
+          <%= form.text_area :content, class: "w-full rounded-lg border border-gray-300"  %>
+      </div>
+      <%= form.submit "Send", class: "w-full bg-red-600 text-white font-semibold py-2 px-2 rounded-lg shadow-md hover:bg-red-700 focus:outline-none focus:ring focus:ring-red-200 mb-2" %>
+    <% end %>

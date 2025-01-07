@@ -22,4 +22,19 @@
       <p class="text-gray-700 text-lg leading-relaxed"><%= @article.content %></p>
     </div>
   </div>
+  <div class="w-full max-w-3xl bg-white p-4 rounded-lg shadow-md space-y-4 mt-8">
+    <h3 class="text-xl font-semibold text-gray-800">Comments</h3>
+    
+    <%= render "comment-form", article: @article %>
+    
+    <% if @comments.present? %>
+      <ul class="space-y-4">
+        <% @comments.each do |comment| %>
+          <%= render "comment", comment: comment %>
+        <% end %>
+      </ul>
+    <% else %>
+      <p class="text-gray-500 mt-4">No comments yet. Be the first to comment!</p>
+    <% end %>
+  </div>
 </div>
