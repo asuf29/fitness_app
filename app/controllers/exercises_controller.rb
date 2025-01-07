@@ -14,7 +14,7 @@ class ExercisesController < ApplicationController
       search = "true"
     end
 
-    @exercises = Exercise.where(search)
+    @pagy, @exercises = pagy(Exercise.where(search), limit: 5 )
   end
 
   def show
