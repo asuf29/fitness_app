@@ -31,5 +31,14 @@
         </li>
       <% end %>
     </ul>
+    <div class="mt-8 flex justify-between items-center">
+      <div class="flex space-x-2">
+        <%== pagy_nav(@pagy, link_extra: 'class="px-3 py-1 rounded-lg bg-gray-200 hover:bg-gray-300 transition"') %>
+      </div>
+      <div class="text-sm text-gray-600">
+        <span><%= @articles.count %></span> / 
+        <span><%= Article.count %></span> articles displayed
+      </div>
+    </div>
   </div>
 </div>
