@@ -3,7 +3,7 @@ class WorkoutsController < ApplicationController
   before_action :find_workout, only: [:show]
 
   def index
-    @workouts = current_user.workouts
+    @pagy, @workouts = pagy(current_user.workouts, limit: 5)
   end
 
   def show
