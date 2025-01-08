@@ -36,5 +36,14 @@
     <% else %>
       <p class="text-gray-500 mt-4">No comments yet. Be the first to comment!</p>
     <% end %>
+    <div class="mt-8 flex justify-between items-center">
+      <div class="flex space-x-2">
+        <%== pagy_nav(@pagy, link_extra: 'class="px-3 py-1 rounded-lg bg-gray-200 hover:bg-gray-300 transition"') %>
+      </div>
+      <div class="text-sm text-gray-600">
+        <span><%= @comments.count %></span> / 
+        <span><%= Comment.count %></span> comments displayed
+      </div>
+    </div>
   </div>
 </div>
