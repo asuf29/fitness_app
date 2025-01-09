@@ -27,7 +27,7 @@ class ExercisesController < ApplicationController
   def create
     @exercise = Exercise.new(exercise_params)
     if @exercise.save
-      redirect_to @exercise
+      redirect_to exercises_path
     else 
       render :new, status: :unprocessable_entity
     end

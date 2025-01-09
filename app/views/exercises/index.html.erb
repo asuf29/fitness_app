@@ -20,39 +20,23 @@
       </div>
     <% end %>
   </div>
-  <div class="w-full max-w-3xl px-6">
-    <ul class="space-y-4">
-      <% @exercises.each do |exercise| %>
-        <li class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 ease-in-out">
-          <div class="flex flex-col md:flex-row items-center md:items-start md:justify-between">
-            <%= link_to exercise_path(exercise) do %>
-              <% if exercise.image.attached? %>
-                <div class="mb-4 md:mb-0 md:mr-4 w-40 h-40 flex-shrink-0">
-                  <%= image_tag exercise.image, class: "w-full h-full object-cover rounded-lg" %>
-                </div>
-              <% end %>
-            <% end %>
-            <div class="flex-1">
-              <%= link_to exercise_path(exercise) do %>
-                <h2 class="text-xl font-semibold text-gray-800"><%= exercise.name %></h2>
-              <% end %>
-              <p class="text-sm text-gray-500 mt-1"><%= exercise.muscle.capitalize %></p>
-            </div>
-            <div class="flex space-x-4 mt-4 md:mt-0">
-              <%= link_to 'Show', exercise_path(exercise), class: "bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600" %>
-            </div>
-          </div>
-        </li>
-      <% end %>
-    </ul>
-    <div class="mt-8 flex justify-between items-center">
-      <div class="flex space-x-2">
-        <%== pagy_nav(@pagy, link_extra: 'class="px-3 py-1 rounded-lg bg-gray-200 hover:bg-gray-300 transition"') %>
-      </div>
-      <div class="text-sm text-gray-600">
-        <span><%= @exercises.count %></span> / 
-        <span><%= Exercise.count %></span> exercises displayed
+  <turbo-frame id="exercise-list">
+    <div class="w-full max-w-3xl px-6">
+      <ul class="space-y-4">
+        <% @exercises.each do |exercise| %>
+          <%= render "exercise", exercise: exercise %>
+        <% end %>
+      </ul>
+      <div class="mt-8 flex justify-between items-center">
+        <div class="flex space-x-2">
+          <%== pagy_nav(@pagy, link_extra: 'class="px-3 py-1 rounded-lg bg-gray-200 hover:bg-gray-300 transition"') %>
+        </div>
+        <div class="text-sm text-gray-600">
+          <span><%= @exercises.count %></span> / 
+          <span><%= Exercise.count %></span> exercises displayed
+        </div>
       </div>
     </div>
-  </div>
+  </turbo-frame>
+
 </div>
