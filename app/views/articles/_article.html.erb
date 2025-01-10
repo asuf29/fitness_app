@@ -1,0 +1,19 @@
+<li class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300 ease-in-out">
+  <div class="flex flex-col md:flex-row items-center md:items-start md:justify-between">
+    <%= link_to article_path(article), target: "_top" do %>
+      <% if article.image.attached? %>
+        <div class="mb-4 md:mb-0 md:mr-4 w-40 h-40 flex-shrink-0">
+          <%= image_tag article.image, class: "w-full h-full object-c_image rounded-lg" %>
+        </div>
+      <% end %>
+    <% end %>
+      <div class="flex-1">
+      <%= link_to article_path(article), target: "_top" do %>
+        <h2 class="text-xl font-semibold text-gray-800"><%= article.title %></h2>
+      <% end %>
+    </div>
+    <div class="flex space-x-4 mt-4 md:mt-0">
+      <%= link_to 'Show', article_path(article), target: "_top", class: "bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600" %>
+    </div>
+  </div>  
+</li>
