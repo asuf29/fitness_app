@@ -11,13 +11,15 @@
       <%= link_to edit_article_comment_path(comment.article, comment) do %>
         <%= image_tag("edit-icon.svg", class: "h-5 w-5 mr-2")%>
       <% end %>
-      <div class="flex items-center space-x-2">
-        <% if comment.likes.exists?(user: current_user) %>
-          <%= button_to "Unlike", like_article_comment_path(comment.article, comment), method: :post, class: "text-red-500 font-semibold" %>
-        <% else %>
-          <%= button_to "Like", like_article_comment_path(comment.article, comment), method: :post, class: "text-blue-500 font-semibold" %>
-        <% end %>
-        <span class="text-gray-600 text-sm"><%= comment.likes.count %> Likes</span>
-      </div>
+      <turbo-frame id="like" class="w-full flex justify-end">
+        <div class="flex items-center space-x-2">
+          <% if comment.likes.exists?(user: current_user) %>
+            <%= button_to "Unlike", like_article_comment_path(comment.article, comment), method: :post, class: "text-red-500 font-semibold" %>
+          <% else %>
+            <%= button_to "Like", like_article_comment_path(comment.article, comment), method: :post, class: "text-blue-500 font-semibold" %>
+          <% end %>
+          <span class="text-gray-600 text-sm"><%= comment.likes.count %> Likes</span>
+        </div>
+      </turbo-frame>
     </div>
 </li>

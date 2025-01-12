@@ -38,7 +38,6 @@ class Articles::CommentsController < ApplicationController
       @comment.likes.create(user: current_user)
       redirect_to article_path(@article), notice: "You liked the comment."
     end
-    
   end
 
   private
