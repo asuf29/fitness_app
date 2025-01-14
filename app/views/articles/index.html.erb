@@ -14,11 +14,11 @@
           <%= render "article", article: article %>
         <% end %>
       </ul>
-      <div class="mt-8 flex justify-between items-center">
-        <div class="flex space-x-2">
+      <div class="mt-8 flex flex-col sm:flex-row sm:justify-between sm:items-center">
+        <div class="flex space-x-2 mb-4 sm:mb-0 justify-center sm:justify-start">
           <%== pagy_nav(@pagy, link_extra: 'class="px-3 py-1 rounded-lg bg-gray-200 hover:bg-gray-300 transition"') %>
         </div>
-        <div class="text-sm text-gray-600">
+        <div class="text-sm text-gray-600 text-center sm:text-left">
           <span><%= @articles.count %></span> / 
           <span><%= Article.count %></span> articles displayed
         </div>

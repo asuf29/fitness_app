@@ -13,7 +13,7 @@
         <%= form.search_field :query, value: params[:query], class: "border border-gray-100 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-red-500 w-full sm:w-80", placeholder: "Search exercises..." %>
       </div>
       <div class="flex items-center mb-4 w-full sm:w-auto">
-        <%= form.select :muscle, options_for_select(Exercise.muscles { |k, v| [k.capitalize, v] }), { include_blank: "Select Muscle", selected: params[:muscle] }, class: "w-full sm:w-60 text-gray-500 border border-gray-100 rounded-lg p-2 ml-2 focus:outline-none focus:ring-2 focus:ring-red-500" %>
+        <%= form.select :muscle, options_for_select(Exercise.muscles { |k, v| [k.capitalize, v] }), { include_blank: "Select Muscle", selected: params[:muscle] }, class: "w-full sm:w-60 text-gray-500 border border-gray-100 rounded-lg p-2  focus:outline-none focus:ring-2 focus:ring-red-500" %>
       </div>
       <div class="flex items-center mb-4 w-full sm:w-auto">
         <%= form.submit "Search", class: "bg-white text-red-500 px-4 py-2 rounded-lg hover:bg-gray-100" %>
@@ -27,11 +27,11 @@
           <%= render "exercise", exercise: exercise %>
         <% end %>
       </ul>
-      <div class="mt-8 flex justify-between items-center">
-        <div class="flex space-x-2">
+      <div class="mt-8 flex flex-col sm:flex-row sm:justify-between sm:items-center">
+        <div class="flex space-x-2 mb-4 sm:mb-0 justify-center sm:justify-start">
           <%== pagy_nav(@pagy, link_extra: 'class="px-3 py-1 rounded-lg bg-gray-200 hover:bg-gray-300 transition"') %>
         </div>
-        <div class="text-sm text-gray-600">
+        <div class="text-sm text-gray-600 text-center sm:text-left">
           <span><%= @exercises.count %></span> / 
           <span><%= Exercise.count %></span> exercises displayed
         </div>
