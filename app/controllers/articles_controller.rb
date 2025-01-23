@@ -1,11 +1,11 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
   def index
-    @articles = Article.all
+    @pagy, @articles = pagy(Article.all, limit: 5)
   end
 
   def show
-    @comments = @article.comments.order(created_at: :desc)
+    @pagy, @comments = pagy(@article.comments.order(created_at: :desc), limit: 5)
   end
 
   def new

@@ -6,7 +6,7 @@ class Api::WorkoutsController < Api::ApplicationController
   end
 
   def show
-    workout = Workout.find_by(id: params[:id])
+    workout = Workout.highlighted.find_by(id: params[:id])
     if workout
       exercises = workout.workout_exercises.map { |workout_exercise| {
         id: workout_exercise.exercise.id,  

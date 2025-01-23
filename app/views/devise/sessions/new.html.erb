@@ -1,30 +1,48 @@
-<div class="flex flex-col justify-center items-center w-full">
-  <h2 class="text-2xl font-bold mb-4">Log in</h2>
-
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="field mb-4">
-      <%= f.label :email, "Email", class: "block text-base font-medium text-black mb-2" %>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "p-3 w-full border border-gray-300 rounded-md bg-white text-black focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500" %>
-    </div>
-
-    <div class="field mb-4">
-      <%= f.label :password, "Password", class: "block text-base font-medium text-black mb-2" %>
-      <%= f.password_field :password, autocomplete: "current-password", class: "p-3 w-full border border-gray-300 rounded-md bg-white text-black focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500" %>
-    </div>
-
-    <% if devise_mapping.rememberable? %>
-      <div class="field flex items-center mb-4">
-        <%= f.check_box :remember_me, class: "h-4 w-4 text-red-500 focus:ring-red-500 border-gray-300 rounded" %>
-        <%= f.label :remember_me, "Remember me", class: "ml-2 text-sm text-black" %>
-      </div>
-    <% end %>
-
+<div class="flex flex-col md:flex-row h-screen overflow-y-auto">
+  <!-- Slogan Kısmı -->
+  <div class="flex flex-col justify-center items-center w-full md:w-1/2 bg-red-700 text-white p-8">
     <div class="mb-4">
-      <%= f.submit "Log in", class: "p-3 w-full text-red-500 bg-white border-2 border-red-500 rounded-md hover:bg-red-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-red-500 font-bold" %>
+      <%= image_tag "corefit.png", class: "w-32 h-auto md:w-40" %>
     </div>
-  <% end %>
+    <h2 class="text-2xl md:text-3xl font-semibold text-center mb-4">
+      Your Fitness Journey Starts Here
+    </h2>
+    <p class="text-base md:text-xl text-center">
+      Transform your body, mind, and lifestyle with CoreFit.
+    </p>
+  </div>
 
-  <div class="flex gap-x-2 ml-2 justify-center items-center">
-    <%= render "devise/shared/links" %>
+  <!-- Form Kısmı -->
+  <div class="flex justify-center items-center w-full md:w-1/2 bg-white p-8">
+    <div class="flex flex-col justify-center items-center w-full max-w-md">
+      <h2 class="text-xl md:text-2xl font-bold mb-6">Log in</h2>
+
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="field mb-6 w-full">
+          <%= f.label :email, "Email", class: "block text-base font-medium text-black mb-2" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "p-3 w-full border border-gray-300 rounded-md bg-white text-black focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500" %>
+        </div>
+
+        <div class="field mb-6 w-full">
+          <%= f.label :password, "Password", class: "block text-base font-medium text-black mb-2" %>
+          <%= f.password_field :password, autocomplete: "current-password", class: "p-3 w-full border border-gray-300 rounded-md bg-white text-black focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500" %>
+        </div>
+
+        <% if devise_mapping.rememberable? %>
+          <div class="field flex items-center mb-6 w-full">
+            <%= f.check_box :remember_me, class: "h-4 w-4 text-red-500 focus:ring-red-500 border-gray-300 rounded" %>
+            <%= f.label :remember_me, "Remember me", class: "ml-2 text-sm text-black" %>
+          </div>
+        <% end %>
+
+        <div class="mb-6 w-full">
+          <%= f.submit "Log in", class: "p-3 w-full text-red-500 bg-white border-2 border-red-500 rounded-md hover:bg-red-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-red-500 font-bold" %>
+        </div>
+      <% end %>
+
+      <div class="flex gap-x-2 justify-center items-center w-full">
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
   </div>
 </div>

@@ -1,48 +1,62 @@
-<div class="flex flex-col justify-center items-center w-full">
-  <h2 class="text-2xl font-bold mb-4">Sign up</h2>
-
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
-
-    <div class="field mb-4">
-      <%= f.label :first_name, class: "block text-base font-medium text-black" %>
-      <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "p-3 w-full border border-gray-300 rounded-md bg-white text-black focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500" %>
-    </div>
-
-    <div class="field mb-4">
-      <%= f.label :last_name, class: "block text-base font-medium text-black" %>
-      <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: "p-3 w-full border border-gray-300 rounded-md bg-white text-black focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500" %>
-    </div>
-
-    <div class="field mb-4">
-      <%= f.label :username, class: "block text-base font-medium text-black" %>
-      <%= f.text_field :username, autofocus: true, autocomplete: "username", class: "p-3 w-full border border-gray-300 rounded-md bg-white text-black focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500" %>
-    </div>
-
-    <div class="field mb-4">
-      <%= f.label :email, class: "block text-base font-medium text-black" %>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "p-3 w-full border border-gray-300 rounded-md bg-white text-black focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500" %>
-    </div>
-
-    <div class="field mb-4">
-      <%= f.label :password, class: "block text-base font-medium text-black" %>
-      <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
-      <% end %><br />
-      <%= f.password_field :password, autocomplete: "new-password", class: "p-3 w-full border border-gray-300 rounded-md bg-white text-black focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500" %>
-    </div>
-
-    <div class="field mb-4">
-      <%= f.label :password_confirmation, class: "block text-base font-medium text-black" %>
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "p-3 w-full border border-gray-300 rounded-md bg-white text-black focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500" %>
-    </div>
-
+<div class="flex flex-col md:flex-row h-screen">
+  <div class="flex flex-col justify-center items-center bg-red-700 text-white p-8 md:w-1/2 h-screen md:h-auto">
     <div class="mb-4">
-      <%= f.submit "Sign up", class: "p-3 w-full text-red-500 bg-white border-2 border-red-500 rounded-md hover:bg-red-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-red-500 font-bold" %>
+      <%= image_tag "corefit.png", class: "w-40 h-auto" %>
     </div>
-  <% end %>
+    <h2 class="text-3xl font-semibold text-center mb-4">Welcome to CoreFit!</h2>
+    <p class="text-xl text-center">
+      Unlock your full potential. Join us today and achieve your fitness goals with ease.
+    </p>
+  </div>
 
-  <div class="">
-    <%= render "devise/shared/links" %>
+  <div class="flex justify-center items-center bg-white p-8 md:w-1/2 h-screen md:h-auto">
+    <div class="flex flex-col justify-center items-center w-full max-w-md">
+      <h2 class="text-2xl font-bold mb-4">Sign up</h2>
+
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+
+        <div class="field mb-4">
+          <%= f.label :first_name, class: "block text-base font-medium text-black" %>
+          <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "p-3 w-full border border-gray-300 rounded-md bg-white text-black focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500" %>
+        </div>
+
+        <div class="field mb-4">
+          <%= f.label :last_name, class: "block text-base font-medium text-black" %>
+          <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: "p-3 w-full border border-gray-300 rounded-md bg-white text-black focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500" %>
+        </div>
+
+        <div class="field mb-4">
+          <%= f.label :username, class: "block text-base font-medium text-black" %>
+          <%= f.text_field :username, autofocus: true, autocomplete: "username", class: "p-3 w-full border border-gray-300 rounded-md bg-white text-black focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500" %>
+        </div>
+
+        <div class="field mb-4">
+          <%= f.label :email, class: "block text-base font-medium text-black" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "p-3 w-full border border-gray-300 rounded-md bg-white text-black focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500" %>
+        </div>
+
+        <div class="field mb-4">
+          <%= f.label :password, class: "block text-base font-medium text-black" %>
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "new-password", class: "p-3 w-full border border-gray-300 rounded-md bg-white text-black focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500" %>
+        </div>
+
+        <div class="field mb-4">
+          <%= f.label :password_confirmation, class: "block text-base font-medium text-black" %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "p-3 w-full border border-gray-300 rounded-md bg-white text-black focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500" %>
+        </div>
+
+        <div class="mb-4">
+          <%= f.submit "Sign up", class: "p-3 w-full text-red-500 bg-white border-2 border-red-500 rounded-md hover:bg-red-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-red-500 font-bold" %>
+        </div>
+      <% end %>
+
+      <div class="">
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
   </div>
 </div>
